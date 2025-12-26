@@ -4,15 +4,15 @@ A greatly enhanced version of the original script by [syncintellect](https://git
 
 ---
 
-## Origin of this Script
+## Credits
 
 The original version of this script was developed by [syncintellect](https://github.com/syncintellect) and can be found on their GitHub profile.
 
 ---
 
-## How to Use
+## How do I use this?
 
 To integrate this script into your site, add the following snippet to the **top** of your `index.html` file, just inside the `<head>` tag:
 
 ```html
-<script type="text/javascript" src="https://cdn.statically.io/gh/q8j-dev/improved-gdab/main/gdab.js"></script>
+<script type="text/javascript" src="https://raw.githack.com/q8j-dev/improved-gdab/main/gdab.js"></script>
