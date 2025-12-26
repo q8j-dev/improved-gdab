@@ -15,4 +15,4 @@ The original version of this script was developed by [syncintellect](https://git
 To integrate this script into your site, add the following snippet to the **top** of your `index.html` file, just inside the `<head>` tag:
 
 ```html
-<script type="text/javascript" src="https://cdn.statically.io/gh/endlessguyin/gamedistribution-antiblock-improved/main/gdab.js"></script>
+<script type="text/javascript" src="https://cdn.statically.io/gh/q8j-dev/improved-gdab/main/gdab.js"></script>
