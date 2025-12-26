@@ -40,9 +40,9 @@ window.fetch = function(resource, options) {
   if (isSameDomain(url)) {
     return originalFetch.apply(this, arguments);
   } else {
-    console.log("Blocked external fetch request to:", url);
+    console.log("Blocked request:", url);
     return new Promise((resolve, reject) => {
-      reject(new Error("External network request blocked"));
+      reject(new Error("Network request blocked"));
     });
   }
 };
@@ -60,7 +60,7 @@ window.XMLHttpRequest = function() {
   const originalSend = xhr.send;
   xhr.send = function(body) {
     if (xhr._blockedUrl) {
-      console.log("Blocked external XHR request to:", xhr._blockedUrl);
+      console.log("Blocked request:", xhr._blockedUrl);
       Object.defineProperty(this, 'status', { value: 0 });
       Object.defineProperty(this, 'statusText', { value: 'Error' });
       
@@ -87,7 +87,7 @@ window.Image = function() {
       if (isSameDomain(value)) {
         originalSrcDescriptor.set.call(this, value);
       } else {
-        console.log("Blocked external image loading:", value);
+        console.log("Blocked image:", value);
       }
     },
     get: function() {
@@ -110,7 +110,7 @@ document.createElement = function(tagName) {
         if (isSameDomain(value)) {
           originalSrcDescriptor.set.call(this, value);
         } else {
-          console.log("Blocked external script loading:", value);
+          console.log("Blocked script:", value);
         }
       },
       get: function() {
@@ -127,7 +127,7 @@ document.createElement = function(tagName) {
         if (isSameDomain(value)) {
           originalSrcDescriptor.set.call(this, value);
         } else {
-          console.log("Blocked external iframe loading:", value);
+          console.log("Blocked iframe:", value);
         }
       },
       get: function() {
@@ -144,7 +144,7 @@ navigator.sendBeacon = function(url, data) {
   if (isSameDomain(url)) {
     return originalSendBeacon.call(this, url, data);
   } else {
-    console.log("Blocked external beacon request to:", url);
+    console.log("Blocked a request:", url);
     return false;
   }
 };
@@ -154,7 +154,7 @@ window.WebSocket = function(url, protocols) {
   if (isSameDomain(url)) {
     return new originalWebSocket(url, protocols);
   } else {
-    console.log("Blocked external WebSocket connection to:", url);
+    console.log("Blocked a connection:", url);
     return {
       send: function() {},
       close: function() {},
